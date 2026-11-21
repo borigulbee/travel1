@@ -1,0 +1,1759 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>🇵🇹🇪🇸 포르투갈 · 스페인 여행 플래너 (2027.01.24 ~ 02.11)</title>
+  <style>
+    :root {
+      --bg: #f4f6f9;
+      --surface: #ffffff;
+      --surface-alt: #f8fafc;
+      --border: #e2e8f0;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --primary: #1d4ed8;
+      --primary-hover: #1e40af;
+      --primary-light: #eff6ff;
+      --pt-bg: #ecfdf5;
+      --pt-text: #047857;
+      --pt-border: #a7f3d0;
+      --es-bg: #fffbeb;
+      --es-text: #b45309;
+      --es-border: #fde68a;
+      --danger: #dc2626;
+      --danger-bg: #fef2f2;
+      --success: #059669;
+      --shadow: 0 2px 8px rgba(15, 23, 42, 0.06);
+      --radius: 12px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.5;
+      padding-bottom: 60px;
+    }
+
+    button, input, select, textarea {
+      font-family: inherit;
+      font-size: 14px;
+    }
+
+    button {
+      cursor: pointer;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      transition: background 0.15s, transform 0.1s;
+    }
+
+    button:active {
+      transform: scale(0.98);
+    }
+
+    /* Header */
+    .header {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+      color: #ffffff;
+      padding: 16px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+    }
+
+    .header-inner {
+      max-width: 1040px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .title-area h1 {
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .subtitle {
+      font-size: 12px;
+      color: #cbd5e1;
+      margin-top: 3px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: rgba(255, 255, 255, 0.14);
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 11px;
+      color: #e2e8f0;
+    }
+
+    .status-pill.live {
+      background: rgba(16, 185, 129, 0.25);
+      color: #6ee7b7;
+    }
+
+    .header-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .btn-header {
+      background: rgba(255, 255, 255, 0.14);
+      color: #ffffff;
+      padding: 7px 12px;
+      font-size: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .btn-header:hover {
+      background: rgba(255, 255, 255, 0.24);
+    }
+
+    .btn-header.accent {
+      background: #2563eb;
+      border-color: #3b82f6;
+    }
+
+    /* Main Tabs */
+    .main-nav {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 0 16px;
+    }
+
+    .main-nav-inner {
+      max-width: 1040px;
+      margin: 0 auto;
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+    }
+
+    .nav-tab {
+      background: transparent;
+      color: var(--text-muted);
+      padding: 13px 16px;
+      border-radius: 0;
+      border-bottom: 3px solid transparent;
+      font-size: 14px;
+      white-space: nowrap;
+    }
+
+    .nav-tab.active {
+      color: var(--primary);
+      border-bottom-color: var(--primary);
+      font-weight: 700;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1040px;
+      margin: 18px auto;
+      padding: 0 16px;
+    }
+
+    /* Day Strip */
+    .day-strip-wrap {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 10px;
+      box-shadow: var(--shadow);
+      margin-bottom: 16px;
+    }
+
+    .day-strip {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+      scrollbar-width: thin;
+    }
+
+    .day-chip {
+      flex: 0 0 auto;
+      min-width: 88px;
+      padding: 8px 10px;
+      border-radius: 10px;
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      text-align: left;
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .day-chip.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #ffffff;
+    }
+
+    .day-chip-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .day-chip-date {
+      font-size: 11px;
+      opacity: 0.85;
+    }
+
+    .day-chip-city {
+      font-size: 11px;
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 82px;
+      margin-top: 2px;
+    }
+
+    /* Day Header Card */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: var(--shadow);
+      margin-bottom: 16px;
+    }
+
+    .day-meta-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .day-title-group h2 {
+      font-size: 20px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .country-badge {
+      font-size: 12px;
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-weight: 700;
+    }
+
+    .country-PT {
+      background: var(--pt-bg);
+      color: var(--pt-text);
+      border: 1px solid var(--pt-border);
+    }
+
+    .country-ES {
+      background: var(--es-bg);
+      color: var(--es-text);
+      border: 1px solid var(--es-border);
+    }
+
+    .country-TR {
+      background: #f1f5f9;
+      color: #475569;
+      border: 1px solid #cbd5e1;
+    }
+
+    .day-city-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+    }
+
+    .input-sm {
+      padding: 7px 10px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--surface-alt);
+      color: var(--text);
+    }
+
+    .input-sm:focus, .form-control:focus {
+      outline: none;
+      border-color: var(--primary);
+      background: #ffffff;
+    }
+
+    .quick-cities {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-top: 8px;
+    }
+
+    .city-preset {
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 11px;
+      padding: 4px 8px;
+      border-radius: 6px;
+    }
+
+    .city-preset:hover {
+      background: var(--primary-light);
+      color: var(--primary);
+      border-color: #bfdbfe;
+    }
+
+    /* Buttons */
+    .btn-primary {
+      background: var(--primary);
+      color: #ffffff;
+      padding: 9px 15px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-hover);
+    }
+
+    .btn-outline {
+      background: #ffffff;
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 7px 11px;
+      font-size: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .btn-outline:hover {
+      background: var(--surface-alt);
+    }
+
+    .btn-map {
+      background: #eff6ff;
+      color: #1d4ed8;
+      border: 1px solid #bfdbfe;
+      padding: 7px 11px;
+      font-size: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 700;
+    }
+
+    .btn-map:hover {
+      background: #dbeafe;
+    }
+
+    .btn-route {
+      background: #f0fdf4;
+      color: #15803d;
+      border: 1px solid #bbf7d0;
+      padding: 7px 11px;
+      font-size: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 700;
+    }
+
+    .btn-route:hover {
+      background: #dcfce7;
+    }
+
+    .btn-danger {
+      background: var(--danger-bg);
+      color: var(--danger);
+      padding: 7px 10px;
+      font-size: 12px;
+    }
+
+    /* Timeline Items */
+    .timeline-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .timeline-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--primary);
+      border-radius: var(--radius);
+      padding: 15px 16px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .timeline-item.cat-food { border-left-color: #f97316; }
+    .timeline-item.cat-move { border-left-color: #10b981; }
+    .timeline-item.cat-stay { border-left-color: #8b5cf6; }
+    .timeline-item.cat-shop { border-left-color: #ec4899; }
+
+    .item-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .item-time-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .time-badge {
+      background: #0f172a;
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 13px;
+      padding: 3px 9px;
+      border-radius: 6px;
+    }
+
+    .cat-tag {
+      font-size: 12px;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 6px;
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    .duration-text {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .item-title {
+      font-size: 17px;
+      font-weight: 800;
+      margin-top: 6px;
+      color: var(--text);
+    }
+
+    .item-address {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .item-memo {
+      background: var(--surface-alt);
+      border-radius: 8px;
+      padding: 9px 12px;
+      font-size: 13px;
+      color: #334155;
+      white-space: pre-wrap;
+    }
+
+    .item-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      padding-top: 6px;
+      border-top: 1px dashed var(--border);
+    }
+
+    .map-btn-group, .edit-btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .empty-state {
+      text-align: center;
+      padding: 40px 20px;
+      background: var(--surface);
+      border: 1px dashed #cbd5e1;
+      border-radius: var(--radius);
+      color: var(--text-muted);
+    }
+
+    .empty-state p {
+      margin-bottom: 14px;
+      font-size: 14px;
+    }
+
+    /* Offline Tip Banner */
+    .tip-banner {
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      padding: 11px 14px;
+      font-size: 12px;
+      color: #475569;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    /* Bookings Section */
+    .booking-section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .booking-section-header h3 {
+      font-size: 16px;
+      font-weight: 800;
+    }
+
+    .booking-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 12px;
+    }
+
+    .booking-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px;
+      background: var(--surface-alt);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .booking-card-title {
+      font-weight: 800;
+      font-size: 15px;
+      color: var(--text);
+    }
+
+    .booking-meta {
+      font-size: 13px;
+      color: #334155;
+      line-height: 1.55;
+    }
+
+    .pnr-badge {
+      display: inline-block;
+      background: #fef3c7;
+      color: #92400e;
+      font-weight: 700;
+      font-size: 12px;
+      padding: 2px 8px;
+      border-radius: 5px;
+      font-family: monospace;
+    }
+
+    /* Summary Table */
+    .summary-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    .summary-table th, .summary-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .summary-table th {
+      background: var(--surface-alt);
+      font-weight: 700;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .summary-row {
+      cursor: pointer;
+    }
+
+    .summary-row:hover {
+      background: #f8fafc;
+    }
+
+    /* Modal */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.55);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      z-index: 100;
+    }
+
+    .modal-backdrop.open {
+      display: flex;
+    }
+
+    .modal {
+      background: #ffffff;
+      border-radius: 14px;
+      width: 100%;
+      max-width: 500px;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 20px;
+      box-shadow: 0 20px 35px rgba(0, 0, 0, 0.25);
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .modal-header h3 {
+      font-size: 17px;
+      font-weight: 800;
+    }
+
+    .form-group {
+      margin-bottom: 13px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      color: #334155;
+      margin-bottom: 5px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 9px 11px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--surface-alt);
+      color: var(--text);
+    }
+
+    textarea.form-control {
+      resize: vertical;
+      min-height: 74px;
+    }
+
+    .modal-footer {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      margin-top: 18px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+    }
+
+    .helper-box {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: 8px;
+      padding: 12px;
+      font-size: 12px;
+      color: #1e3a8a;
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: #0f172a;
+      color: #ffffff;
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 600;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s, transform 0.2s;
+      z-index: 200;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+      white-space: nowrap;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .hidden { display: none !important; }
+
+    @media (max-width: 600px) {
+      .form-row { grid-template-columns: 1fr; }
+      .header-inner { flex-direction: column; align-items: stretch; }
+      .header-actions { justify-content: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="title-area">
+        <h1>🇵🇹🇪🇸 포르투갈 · 스페인 여행 플래너</h1>
+        <div class="subtitle">
+          <span>2027.01.24(일) ~ 02.11(목) · 18박 19일</span>
+          <span id="ddayBadge" class="status-pill">계산 중</span>
+          <span id="syncBadge" class="status-pill">💾 기기 자동저장</span>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button class="btn-header accent" onclick="copyInstantShareLink()">🔗 일행에게 링크로 바로 공유</button>
+        <button class="btn-header" onclick="openSyncModal()">☁️ 실시간 자동동기화</button>
+        <button class="btn-header" onclick="openBackupModal()">💾 백업/복원</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation Tabs -->
+  <nav class="main-nav">
+    <div class="main-nav-inner">
+      <button class="nav-tab active" data-tab="timeline" onclick="switchTab('timeline')">📅 일자별 타임라인 (19일)</button>
+      <button class="nav-tab" data-tab="bookings" onclick="switchTab('bookings')">✈️ 항공 · 숙소 · 교통 예약</button>
+      <button class="nav-tab" data-tab="overview" onclick="switchTab('overview')">🗺️ 전체 일정 한눈에 보기</button>
+    </div>
+  </nav>
+
+  <main class="container">
+
+    <!-- Offline & Maps Tip -->
+    <div class="tip-banner">
+      <span>💡</span>
+      <div>
+        <strong>오프라인 & 구글 맵 활용 팁:</strong> 모든 일정은 기기에 자동 저장되어 비행기 모드에서도 조회·수정이 가능합니다. 출국 전 스마트폰 <strong>구글 맵 앱 → 프로필 → 오프라인 지도</strong>에서 방문 도시를 미리 내려받으면, 데이터 없는 현지에서도 아래 <strong>[📍 구글 맵 위치 열기]</strong> 버튼이 즉시 작동합니다.
+      </div>
+    </div>
+
+    <!-- TAB 1: TIMELINE -->
+    <section id="tab-timeline">
+      <div class="day-strip-wrap">
+        <div class="day-strip" id="dayStrip"></div>
+      </div>
+
+      <div class="card">
+        <div class="day-meta-header">
+          <div class="day-title-group">
+            <h2>
+              <span id="currentDayLabel">Day 1</span>
+              <span id="currentCountryBadge" class="country-badge country-TR">✈️ 이동/출국</span>
+            </h2>
+            <div id="currentDateFull" style="font-size:13px; color:var(--text-muted); margin-top:2px;">2027년 1월 24일 (일요일)</div>
+          </div>
+          <button class="btn-primary" onclick="openItemModal()">+ 이 날 일정 추가</button>
+        </div>
+
+        <div class="day-city-bar">
+          <select id="dayCountrySelect" class="input-sm" onchange="updateDayMeta()">
+            <option value="PT">🇵🇹 포르투갈</option>
+            <option value="ES">🇪🇸 스페인</option>
+            <option value="TR">✈️ 이동/출국·귀국</option>
+          </select>
+          <input type="text" id="dayCityInput" class="input-sm" style="flex:1; min-width:160px;" placeholder="방문 도시 입력 (예: 리스본, 포르투, 세비야...)" onchange="updateDayMeta()" />
+          <input type="text" id="dayNoteInput" class="input-sm" style="flex:1.4; min-width:200px;" placeholder="오늘의 핵심 메모 (예: 리스보아 카드 개시)" onchange="updateDayMeta()" />
+        </div>
+
+        <div class="quick-cities">
+          <span style="font-size:11px; color:var(--text-muted); padding:4px 2px;">빠른 도시 선택:</span>
+          <button class="city-preset" onclick="setCityPreset('PT', '리스본')">🇵🇹 리스본</button>
+          <button class="city-preset" onclick="setCityPreset('PT', '신트라 · 호카곶')">🇵🇹 신트라·호카곶</button>
+          <button class="city-preset" onclick="setCityPreset('PT', '포르투')">🇵🇹 포르투</button>
+          <button class="city-preset" onclick="setCityPreset('ES', '세비야')">🇪🇸 세비야</button>
+          <button class="city-preset" onclick="setCityPreset('ES', '론다 · 말라가')">🇪🇸 론다·말라가</button>
+          <button class="city-preset" onclick="setCityPreset('ES', '그라나다')">🇪🇸 그라나다</button>
+          <button class="city-preset" onclick="setCityPreset('ES', '마드리드')">🇪🇸 마드리드</button>
+          <button class="city-preset" onclick="setCityPreset('ES', '톨레도 · 세고비아')">🇪🇸 톨레도·세고비아</button>
+          <button class="city-preset" onclick="setCityPreset('ES', '바르셀로나')">🇪🇸 바르셀로나</button>
+        </div>
+      </div>
+
+      <div id="timelineList" class="timeline-list"></div>
+    </section>
+
+    <!-- TAB 2: BOOKINGS -->
+    <section id="tab-bookings" class="hidden">
+      <!-- Flights -->
+      <div class="card">
+        <div class="booking-section-header">
+          <h3>✈️ 항공편 예약 (출국 · 귀국 · 구간 이동)</h3>
+          <button class="btn-primary" onclick="openBookingModal('flights')">+ 항공편 추가</button>
+        </div>
+        <div id="flightsList" class="booking-grid"></div>
+      </div>
+
+      <!-- Stays -->
+      <div class="card">
+        <div class="booking-section-header">
+          <h3>🏨 숙소 예약 (체크인 · 체크아웃 · 구글 맵)</h3>
+          <button class="btn-primary" onclick="openBookingModal('stays')">+ 숙소 추가</button>
+        </div>
+        <div id="staysList" class="booking-grid"></div>
+      </div>
+
+      <!-- Transport -->
+      <div class="card">
+        <div class="booking-section-header">
+          <h3>🚆 현지 교통 예약 (기차 CP/Renfe · 버스 ALSA 등)</h3>
+          <button class="btn-primary" onclick="openBookingModal('transports')">+ 교통편 추가</button>
+        </div>
+        <div id="transportsList" class="booking-grid"></div>
+      </div>
+    </section>
+
+    <!-- TAB 3: OVERVIEW -->
+    <section id="tab-overview" class="hidden">
+      <div class="card" style="overflow-x:auto;">
+        <div class="booking-section-header">
+          <h3>🗺️ 전체 19일 일정표 (클릭 시 해당 날짜로 이동)</h3>
+        </div>
+        <table class="summary-table">
+          <thead>
+            <tr>
+              <th>일차 / 날짜</th>
+              <th>국가 · 도시</th>
+              <th>주요 일정 타임라인</th>
+            </tr>
+          </thead>
+          <tbody id="overviewTableBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Modal: Add/Edit Timeline Item -->
+  <div id="itemModal" class="modal-backdrop">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="itemModalTitle">일정 추가</h3>
+        <button class="btn-outline" onclick="closeModal('itemModal')">✕</button>
+      </div>
+      <input type="hidden" id="editItemId" />
+      <div class="form-row">
+        <div class="form-group">
+          <label>시작 시간</label>
+          <input type="time" id="itemTime" class="form-control" value="10:00" required />
+        </div>
+        <div class="form-group">
+          <label>예상 소요 시간</label>
+          <input type="text" id="itemDuration" class="form-control" placeholder="예: 1시간 30분" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label>카테고리</label>
+        <select id="itemCategory" class="form-control">
+          <option value="spot">🏛️ 관광 · 명소</option>
+          <option value="food">🍽️ 맛집 · 카페</option>
+          <option value="move">🚆 이동 · 교통</option>
+          <option value="stay">🏨 숙소 · 체크인</option>
+          <option value="shop">🛍️ 쇼핑 · 기타</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>장소명 (구글 맵 검색 기준)</label>
+        <input type="text" id="itemPlace" class="form-control" placeholder="예: 벨렝탑, 사그라다 파밀리아, 타임아웃 마켓" required />
+      </div>
+      <div class="form-group">
+        <label>상세 주소 또는 도시명 (선택 - 지도 정확도 향상)</label>
+        <input type="text" id="itemAddress" class="form-control" placeholder="예: Lisbon, Portugal 또는 바르셀로나" />
+      </div>
+      <div class="form-group">
+        <label>메모 (입장권 예약시간, 추천 메뉴, 주의사항 등)</label>
+        <textarea id="itemMemo" class="form-control" placeholder="예: 10:30 사전예약 바우처 확인, 에그타르트 포장"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-outline" onclick="closeModal('itemModal')">취소</button>
+        <button class="btn-primary" onclick="saveTimelineItem()">저장하기</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Add/Edit Booking -->
+  <div id="bookingModal" class="modal-backdrop">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="bookingModalTitle">예약 추가</h3>
+        <button class="btn-outline" onclick="closeModal('bookingModal')">✕</button>
+      </div>
+      <input type="hidden" id="bookingType" />
+      <input type="hidden" id="editBookingId" />
+      <div class="form-group">
+        <label id="bkTitleLabel">구간 / 숙소명</label>
+        <input type="text" id="bkTitle" class="form-control" placeholder="예: 인천(ICN) → 리스본(LIS)" />
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label id="bkDate1Label">출발일시 / 체크인</label>
+          <input type="text" id="bkDate1" class="form-control" placeholder="예: 2027-01-24 12:30" />
+        </div>
+        <div class="form-group">
+          <label id="bkDate2Label">도착일시 / 체크아웃</label>
+          <input type="text" id="bkDate2" class="form-control" placeholder="예: 2027-01-24 19:45" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label id="bkProviderLabel">항공사 / 도시 / 교통수단</label>
+          <input type="text" id="bkProvider" class="form-control" placeholder="예: 대한항공 KE921 / 리스본" />
+        </div>
+        <div class="form-group">
+          <label>예약번호 (PNR)</label>
+          <input type="text" id="bkPnr" class="form-control" placeholder="예: ABC123" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label>구글 맵 검색용 위치/주소 (선택)</label>
+        <input type="text" id="bkLocation" class="form-control" placeholder="예: Lisbon Airport 또는 숙소 영문명/주소" />
+      </div>
+      <div class="form-group">
+        <label>세부 메모 (수하물, 좌석, 호스트 연락처, 플랫폼 등)</label>
+        <textarea id="bkMemo" class="form-control" placeholder="예: 위탁수하물 23kg 1개 포함, 무료 취소 1/15까지"></textarea>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-outline" onclick="closeModal('bookingModal')">취소</button>
+        <button class="btn-primary" onclick="saveBookingItem()">저장하기</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: GitHub Gist Real-Time Sync -->
+  <div id="syncModal" class="modal-backdrop">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>☁️ GitHub 실시간 공유방 설정</h3>
+        <button class="btn-outline" onclick="closeModal('syncModal')">✕</button>
+      </div>
+      <div class="helper-box">
+        <strong>별도 서버/Firebase 없이 같은 링크에서 실시간으로 함께 수정하려면:</strong><br/>
+        1. GitHub 로그인 → 우측 상단 프로필 → <strong>Settings → Developer settings → Personal access tokens → Tokens (classic)</strong><br/>
+        2. <strong>Generate new token (classic)</strong> 클릭 후 <strong><code>gist</code> 체크박스 1개만 체크</strong>하고 생성된 토큰(<code>ghp_...</code>)을 복사해 아래에 붙여넣으세요.<br/>
+        3. 연결 후 생성되는 <strong>실시간 공유 URL</strong>을 일행에게 보내면 누구나 토큰 입력 없이 바로 접속해 함께 수정할 수 있습니다.
+      </div>
+      <div class="form-group">
+        <label>GitHub Personal Access Token (gist 권한)</label>
+        <input type="password" id="ghTokenInput" class="form-control" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" />
+      </div>
+      <div class="form-group">
+        <label>Gist ID (새로 만들 때는 비워두세요)</label>
+        <input type="text" id="ghGistIdInput" class="form-control" placeholder="자동 생성됩니다" />
+      </div>
+      <div id="liveShareUrlBox" class="form-group hidden">
+        <label>일행에게 보낼 실시간 공유 URL</label>
+        <div style="display:flex; gap:6px;">
+          <input type="text" id="liveShareUrlInput" class="form-control" readonly />
+          <button class="btn-primary" style="white-space:nowrap;" onclick="copyLiveShareUrl()">복사</button>
+        </div>
+      </div>
+      <div class="modal-footer" style="justify-content:space-between;">
+        <button class="btn-danger" onclick="disconnectGhSync()">연결 해제</button>
+        <div style="display:flex; gap:8px;">
+          <button class="btn-outline" onclick="manualPullGh()">🔄 지금 불러오기</button>
+          <button class="btn-primary" onclick="connectGhSync()">연결 및 동기화</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal: Backup & Restore -->
+  <div id="backupModal" class="modal-backdrop">
+    <div class="modal">
+      <div class="modal-header">
+        <h3>💾 데이터 백업 및 불러오기</h3>
+        <button class="btn-outline" onclick="closeModal('backupModal')">✕</button>
+      </div>
+      <p style="font-size:13px; color:#475569; margin-bottom:14px;">
+        작성한 19일간의 모든 일정과 예약 내역을 파일(.json)로 저장하거나, 다른 기기에서 저장한 파일을 불러올 수 있습니다.
+      </p>
+      <div style="display:flex; flex-direction:column; gap:10px;">
+        <button class="btn-primary" style="justify-content:center;" onclick="exportJsonFile()">⬇️ 내 기기에 백업 파일(.json) 다운로드</button>
+        <label class="btn-outline" style="justify-content:center; cursor:pointer; padding:10px;">
+          ⬆️ 백업 파일(.json) 불러오기
+          <input type="file" accept=".json" style="display:none;" onchange="importJsonFile(event)" />
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+  <script>
+    const STORAGE_KEY = 'iberia_travel_planner_2027_v1';
+    const GH_SYNC_KEY = 'iberia_gh_sync_2027_v1';
+    const START_DATE = '2027-01-24';
+    const TOTAL_DAYS = 19;
+    const WEEKDAYS = ['일', '월', '화', '수', '목', '금', '토'];
+
+    let state = {
+      updatedAt: 0,
+      days: [],
+      bookings: {
+        flights: [],
+        stays: [],
+        transports: []
+      }
+    };
+
+    let selectedDayIndex = 0;
+    let ghConfig = { token: '', gistId: '' };
+    let pollTimer = null;
+
+    // Initialize 19 days (2027-01-24 ~ 2027-02-11)
+    function createDefaultDays() {
+      const days = [];
+      const base = new Date(2027, 0, 24);
+      for (let i = 0; i < TOTAL_DAYS; i++) {
+        const d = new Date(base);
+        d.setDate(base.getDate() + i);
+        const yyyy = d.getFullYear();
+        const mm = String(d.getMonth() + 1).padStart(2, '0');
+        const dd = String(d.getDate()).padStart(2, '0');
+        const w = WEEKDAYS[d.getDay()];
+        let defaultCity = '일정 미정';
+        let defaultCountry = 'PT';
+        if (i === 0) { defaultCity = '인천 → 출발'; defaultCountry = 'TR'; }
+        if (i === TOTAL_DAYS - 1) { defaultCity = '귀국 도착'; defaultCountry = 'TR'; }
+        days.push({
+          dayNum: i + 1,
+          dateStr: `${yyyy}-${mm}-${dd}`,
+          shortDate: `${d.getMonth() + 1}/${d.getDate()}(${w})`,
+          fullDate: `${yyyy}년 ${d.getMonth() + 1}월 ${d.getDate()}일 (${w}요일)`,
+          country: defaultCountry,
+          city: defaultCity,
+          note: '',
+          items: []
+        });
+      }
+      return days;
+    }
+
+    function showToast(msg) {
+      const el = document.getElementById('toast');
+      el.textContent = msg;
+      el.classList.add('show');
+      clearTimeout(el._t);
+      el._t = setTimeout(() => el.classList.remove('show'), 2600);
+    }
+
+    function updateDday() {
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      const start = new Date(2027, 0, 24);
+      const diff = Math.round((start - today) / (1000 * 60 * 60 * 24));
+      const badge = document.getElementById('ddayBadge');
+      if (diff > 0) badge.textContent = `출발까지 D-${diff}`;
+      else if (diff === 0) badge.textContent = `🎉 오늘 출발!`;
+      else if (diff > -TOTAL_DAYS) badge.textContent = `여행 ${Math.abs(diff) + 1}일차`;
+      else badge.textContent = `여행 완료`;
+    }
+
+    // UTF-8 safe Base64 helpers for instant URL sharing
+    function encodeSharePayload(obj) {
+      const json = JSON.stringify(obj);
+      const bytes = new TextEncoder().encode(json);
+      let bin = '';
+      bytes.forEach(b => bin += String.fromCharCode(b));
+      return btoa(bin).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+    }
+
+    function decodeSharePayload(str) {
+      let b64 = str.replace(/-/g, '+').replace(/_/g, '/');
+      while (b64.length % 4) b64 += '=';
+      const bin = atob(b64);
+      const bytes = new Uint8Array(bin.length);
+      for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+      return JSON.parse(new TextDecoder().decode(bytes));
+    }
+
+    function copyInstantShareLink() {
+      try {
+        const encoded = encodeSharePayload(state);
+        const url = `${window.location.origin}${window.location.pathname}#share=${encoded}`;
+        navigator.clipboard.writeText(url).then(() => {
+          showToast('🔗 현재 일정이 담긴 공유 링크가 복사되었습니다!');
+        }).catch(() => {
+          prompt('아래 링크를 복사해서 일행에게 공유하세요:', url);
+        });
+      } catch (e) {
+        showToast('링크 생성 중 오류가 발생했습니다. 백업 파일을 이용해주세요.');
+      }
+    }
+
+    // Load & Save State
+    async function initApp() {
+      updateDday();
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        try {
+          state = JSON.parse(saved);
+        } catch (e) {}
+      }
+      if (!state.days || state.days.length !== TOTAL_DAYS) {
+        state.days = createDefaultDays();
+      }
+      if (!state.bookings) {
+        state.bookings = { flights: [], stays: [], transports: [] };
+      }
+
+      const savedGh = localStorage.getItem(GH_SYNC_KEY);
+      if (savedGh) {
+        try { ghConfig = JSON.parse(savedGh); } catch (e) {}
+      }
+
+      // Check URL hash (#gh=gistId:token OR #share=...)
+      const hash = window.location.hash || '';
+      if (hash.startsWith('#gh=')) {
+        const parts = hash.slice(4).split(':');
+        if (parts.length === 2 && parts[0] && parts[1]) {
+          ghConfig = { gistId: parts[0], token: parts[1] };
+          localStorage.setItem(GH_SYNC_KEY, JSON.stringify(ghConfig));
+        }
+      } else if (hash.startsWith('#share=')) {
+        try {
+          const sharedData = decodeSharePayload(hash.slice(7));
+          if (sharedData && Array.isArray(sharedData.days)) {
+            const hasLocalItems = state.days.some(d => d.items && d.items.length > 0);
+            if (!hasLocalItems || confirm('공유받은 여행 일정을 불러올까요? (현재 기기의 일정이 공유받은 일정으로 덮어씌워집니다)')) {
+              state = sharedData;
+              localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+              showToast('✅ 공유받은 일정을 불러왔습니다!');
+            }
+            history.replaceState(null, '', window.location.pathname);
+          }
+        } catch (e) {
+          console.error(e);
+        }
+      }
+
+      renderAll();
+
+      if (ghConfig.token && ghConfig.gistId) {
+        updateSyncBadge('live', '☁️ 실시간 동기화 중');
+        await pullFromGh(true);
+        startPolling();
+      }
+    }
+
+    function saveState() {
+      state.updatedAt = Date.now();
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      renderAll();
+      if (ghConfig.token && ghConfig.gistId) {
+        pushToGh();
+      }
+    }
+
+    // GitHub Gist Sync Logic
+    function updateSyncBadge(mode, text) {
+      const badge = document.getElementById('syncBadge');
+      badge.textContent = text;
+      badge.className = 'status-pill' + (mode === 'live' ? ' live' : '');
+    }
+
+    function openSyncModal() {
+      document.getElementById('ghTokenInput').value = ghConfig.token || '';
+      document.getElementById('ghGistIdInput').value = ghConfig.gistId || '';
+      updateLiveShareBox();
+      document.getElementById('syncModal').classList.add('open');
+    }
+
+    function updateLiveShareBox() {
+      const box = document.getElementById('liveShareUrlBox');
+      if (ghConfig.token && ghConfig.gistId) {
+        const shareUrl = `${window.location.origin}${window.location.pathname}#gh=${ghConfig.gistId}:${ghConfig.token}`;
+        document.getElementById('liveShareUrlInput').value = shareUrl;
+        box.classList.remove('hidden');
+      } else {
+        box.classList.add('hidden');
+      }
+    }
+
+    function copyLiveShareUrl() {
+      const val = document.getElementById('liveShareUrlInput').value;
+      navigator.clipboard.writeText(val).then(() => {
+        showToast('🔗 실시간 공유 링크가 복사되었습니다!');
+      });
+    }
+
+    async function connectGhSync() {
+      const token = document.getElementById('ghTokenInput').value.trim();
+      let gistId = document.getElementById('ghGistIdInput').value.trim();
+      if (!token) {
+        alert('GitHub Personal Access Token을 입력해주세요.');
+        return;
+      }
+      updateSyncBadge('', '⏳ 연결 중...');
+      try {
+        if (!gistId) {
+          // Create new private gist
+          const res = await fetch('https://api.github.com/gists', {
+            method: 'POST',
+            headers: {
+              'Authorization': `token ${token}`,
+              'Accept': 'application/vnd.github.v3+json',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              description: 'Portugal & Spain Travel Planner 2027',
+              public: false,
+              files: {
+                'iberia-trip-2027.json': {
+                  content: JSON.stringify(state, null, 2)
+                }
+              }
+            })
+          });
+          if (!res.ok) throw new Error('토큰 인증에 실패했습니다. gist 권한을 확인해주세요.');
+          const data = await res.json();
+          gistId = data.id;
+          document.getElementById('ghGistIdInput').value = gistId;
+        } else {
+          // Fetch existing gist
+          ghConfig = { token, gistId };
+          await pullFromGh(false);
+        }
+        ghConfig = { token, gistId };
+        localStorage.setItem(GH_SYNC_KEY, JSON.stringify(ghConfig));
+        history.replaceState(null, '', `#gh=${gistId}:${token}`);
+        updateLiveShareBox();
+        updateSyncBadge('live', '☁️ 실시간 동기화 중');
+        startPolling();
+        showToast('✅ GitHub 실시간 공유방이 연결되었습니다!');
+      } catch (err) {
+        updateSyncBadge('', '⚠️ 연결 실패');
+        alert(err.message);
+      }
+    }
+
+    async function pushToGh() {
+      if (!ghConfig.token || !ghConfig.gistId) return;
+      try {
+        updateSyncBadge('live', '☁️ 저장 중...');
+        const res = await fetch(`https://api.github.com/gists/${ghConfig.gistId}`, {
+          method: 'PATCH',
+          headers: {
+            'Authorization': `token ${ghConfig.token}`,
+            'Accept': 'application/vnd.github.v3+json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            files: {
+              'iberia-trip-2027.json': {
+                content: JSON.stringify(state, null, 2)
+              }
+            }
+          })
+        });
+        if (res.ok) {
+          updateSyncBadge('live', '☁️ 실시간 동기화됨');
+        }
+      } catch (e) {
+        updateSyncBadge('', '📴 오프라인 (연결 시 동기화)');
+      }
+    }
+
+    async function pullFromGh(silent = true) {
+      if (!ghConfig.token || !ghConfig.gistId) return;
+      try {
+        const res = await fetch(`https://api.github.com/gists/${ghConfig.gistId}?t=${Date.now()}`, {
+          headers: {
+            'Authorization': `token ${ghConfig.token}`,
+            'Accept': 'application/vnd.github.v3+json'
+          }
+        });
+        if (!res.ok) throw new Error('동기화 불러오기 실패');
+        const data = await res.json();
+        const file = data.files && data.files['iberia-trip-2027.json'];
+        if (file && file.content) {
+          const remote = JSON.parse(file.content);
+          if (remote && Array.isArray(remote.days)) {
+            if (!silent || (remote.updatedAt && remote.updatedAt > (state.updatedAt || 0))) {
+              state = remote;
+              localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+              renderAll();
+              if (!silent) showToast('🔄 최신 일정을 불러왔습니다.');
+            }
+          }
+        }
+        updateSyncBadge('live', '☁️ 실시간 동기화됨');
+      } catch (e) {
+        if (!silent) alert('데이터를 불러오지 못했습니다. 인터넷 연결과 토큰을 확인해주세요.');
+        updateSyncBadge('', '📴 오프라인 대기');
+      }
+    }
+
+    function manualPullGh() {
+      pullFromGh(false);
+    }
+
+    function disconnectGhSync() {
+      ghConfig = { token: '', gistId: '' };
+      localStorage.removeItem(GH_SYNC_KEY);
+      clearInterval(pollTimer);
+      history.replaceState(null, '', window.location.pathname);
+      updateSyncBadge('', '💾 기기 자동저장');
+      closeModal('syncModal');
+      showToast('실시간 동기화가 해제되었습니다.');
+    }
+
+    function startPolling() {
+      clearInterval(pollTimer);
+      pollTimer = setInterval(() => {
+        if (document.visibilityState === 'visible') {
+          pullFromGh(true);
+        }
+      }, 15000);
+    }
+
+    // Tabs
+    function switchTab(tabName) {
+      document.querySelectorAll('.nav-tab').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.tab === tabName);
+      });
+      ['timeline', 'bookings', 'overview'].forEach(t => {
+        document.getElementById(`tab-${t}`).classList.toggle('hidden', t !== tabName);
+      });
+      renderAll();
+    }
+
+    // Rendering
+    function renderAll() {
+      renderDayStrip();
+      renderSelectedDay();
+      renderBookings();
+      renderOverview();
+    }
+
+    function getCountryInfo(code) {
+      if (code === 'PT') return { flag: '🇵🇹', label: '🇵🇹 포르투갈', cls: 'country-PT' };
+      if (code === 'ES') return { flag: '🇪🇸', label: '🇪🇸 스페인', cls: 'country-ES' };
+      return { flag: '✈️', label: '✈️ 이동/출국·귀국', cls: 'country-TR' };
+    }
+
+    function getCategoryInfo(cat) {
+      const map = {
+        spot: { label: '🏛️ 관광', cls: 'cat-spot' },
+        food: { label: '🍽️ 맛집/카페', cls: 'cat-food' },
+        move: { label: '🚆 이동', cls: 'cat-move' },
+        stay: { label: '🏨 숙소', cls: 'cat-stay' },
+        shop: { label: '🛍️ 쇼핑/기타', cls: 'cat-shop' }
+      };
+      return map[cat] || map.spot;
+    }
+
+    function renderDayStrip() {
+      const strip = document.getElementById('dayStrip');
+      strip.innerHTML = state.days.map((d, idx) => {
+        const c = getCountryInfo(d.country);
+        const count = d.items ? d.items.length : 0;
+        return `
+          <button class="day-chip ${idx === selectedDayIndex ? 'active' : ''}" onclick="selectDay(${idx})">
+            <div class="day-chip-top">
+              <span>Day ${d.dayNum}</span>
+              <span>${c.flag}${count > 0 ? ` · ${count}` : ''}</span>
+            </div>
+            <div class="day-chip-date">${d.shortDate}</div>
+            <div class="day-chip-city">${escapeHtml(d.city || '일정 미정')}</div>
+          </button>
+        `;
+      }).join('');
+    }
+
+    function selectDay(idx) {
+      selectedDayIndex = idx;
+      renderDayStrip();
+      renderSelectedDay();
+    }
+
+    function renderSelectedDay() {
+      const day = state.days[selectedDayIndex];
+      const c = getCountryInfo(day.country);
+      document.getElementById('currentDayLabel').textContent = `Day ${day.dayNum}`;
+      const badge = document.getElementById('currentCountryBadge');
+      badge.textContent = c.label;
+      badge.className = `country-badge ${c.cls}`;
+      document.getElementById('currentDateFull').textContent = day.fullDate;
+      document.getElementById('dayCountrySelect').value = day.country || 'PT';
+      document.getElementById('dayCityInput').value = day.city || '';
+      document.getElementById('dayNoteInput').value = day.note || '';
+
+      const listEl = document.getElementById('timelineList');
+      const items = (day.items || []).slice().sort((a, b) => (a.time || '').localeCompare(b.time || ''));
+
+      if (items.length === 0) {
+        listEl.innerHTML = `
+          <div class="empty-state">
+            <p>아직 등록된 세부 일정이 없습니다.<br/>방문할 명소나 맛집, 이동 일정을 추가해 보세요.</p>
+            <button class="btn-primary" onclick="openItemModal()">+ 첫 일정 추가하기</button>
+          </div>
+        `;
+        return;
+      }
+
+      listEl.innerHTML = items.map((item, i) => {
+        const cat = getCategoryInfo(item.category);
+        const query = encodeURIComponent(item.address ? `${item.place} ${item.address}` : `${item.place} ${day.city !== '일정 미정' ? day.city : ''}`);
+        const mapUrl = `https://www.google.com/maps/search/?api=1&query=${query}`;
+
+        let routeBtn = '';
+        if (i > 0) {
+          const prev = items[i - 1];
+          const prevQuery = encodeURIComponent(prev.address ? `${prev.place} ${prev.address}` : `${prev.place} ${day.city !== '일정 미정' ? day.city : ''}`);
+          const dirUrl = `https://www.google.com/maps/dir/?api=1&origin=${prevQuery}&destination=${query}`;
+          routeBtn = `<a class="btn-route" href="${dirUrl}" target="_blank" rel="noopener">🧭 이전 장소에서 길찾기</a>`;
+        }
+
+        return `
+          <div class="timeline-item ${cat.cls}">
+            <div class="item-top">
+              <div>
+                <div class="item-time-row">
+                  <span class="time-badge">${escapeHtml(item.time || '시간 미정')}</span>
+                  <span class="cat-tag">${cat.label}</span>
+                  ${item.duration ? `<span class="duration-text">⏱ ${escapeHtml(item.duration)}</span>` : ''}
+                </div>
+                <div class="item-title">${escapeHtml(item.place)}</div>
+                ${item.address ? `<div class="item-address">📌 ${escapeHtml(item.address)}</div>` : ''}
+              </div>
+            </div>
+            ${item.memo ? `<div class="item-memo">${escapeHtml(item.memo)}</div>` : ''}
+            <div class="item-actions">
+              <div class="map-btn-group">
+                <a class="btn-map" href="${mapUrl}" target="_blank" rel="noopener">📍 구글 맵 위치 열기</a>
+                ${routeBtn}
+              </div>
+              <div class="edit-btn-group">
+                <button class="btn-outline" onclick="openItemModal('${item.id}')">✏️ 수정</button>
+                <button class="btn-danger" onclick="deleteTimelineItem('${item.id}')">🗑️ 삭제</button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function updateDayMeta() {
+      const day = state.days[selectedDayIndex];
+      day.country = document.getElementById('dayCountrySelect').value;
+      day.city = document.getElementById('dayCityInput').value.trim() || '일정 미정';
+      day.note = document.getElementById('dayNoteInput').value.trim();
+      saveState();
+    }
+
+    function setCityPreset(country, city) {
+      const day = state.days[selectedDayIndex];
+      day.country = country;
+      day.city = city;
+      saveState();
+      showToast(`${city} 설정 완료`);
+    }
+
+    // Timeline Modal CRUD
+    function openItemModal(itemId = null) {
+      const day = state.days[selectedDayIndex];
+      document.getElementById('editItemId').value = itemId || '';
+      if (itemId) {
+        const item = day.items.find(x => x.id === itemId);
+        document.getElementById('itemModalTitle').textContent = '일정 수정';
+        document.getElementById('itemTime').value = item.time || '10:00';
+        document.getElementById('itemDuration').value = item.duration || '';
+        document.getElementById('itemCategory').value = item.category || 'spot';
+        document.getElementById('itemPlace').value = item.place || '';
+        document.getElementById('itemAddress').value = item.address || '';
+        document.getElementById('itemMemo').value = item.memo || '';
+      } else {
+        document.getElementById('itemModalTitle').textContent = `Day ${day.dayNum} (${day.shortDate}) 일정 추가`;
+        document.getElementById('itemTime').value = '10:00';
+        document.getElementById('itemDuration').value = '';
+        document.getElementById('itemCategory').value = 'spot';
+        document.getElementById('itemPlace').value = '';
+        document.getElementById('itemAddress').value = day.city !== '일정 미정' ? day.city : '';
+        document.getElementById('itemMemo').value = '';
+      }
+      document.getElementById('itemModal').classList.add('open');
+    }
+
+    function saveTimelineItem() {
+      const place = document.getElementById('itemPlace').value.trim();
+      if (!place) {
+        alert('장소명을 입력해주세요.');
+        return;
+      }
+      const day = state.days[selectedDayIndex];
+      const editId = document.getElementById('editItemId').value;
+      const payload = {
+        id: editId || 'item_' + Date.now() + '_' + Math.random().toString(36).slice(2, 6),
+        time: document.getElementById('itemTime').value || '09:00',
+        duration: document.getElementById('itemDuration').value.trim(),
+        category: document.getElementById('itemCategory').value,
+        place,
+        address: document.getElementById('itemAddress').value.trim(),
+        memo: document.getElementById('itemMemo').value.trim()
+      };
+
+      if (editId) {
+        const idx = day.items.findIndex(x => x.id === editId);
+        if (idx > -1) day.items[idx] = payload;
+      } else {
+        day.items.push(payload);
+      }
+      day.items.sort((a, b) => (a.time || '').localeCompare(b.time || ''));
+      closeModal('itemModal');
+      saveState();
+      showToast('일정이 저장되었습니다.');
+    }
+
+    function deleteTimelineItem(itemId) {
+      if (!confirm('이 일정을 삭제할까요?')) return;
+      const day = state.days[selectedDayIndex];
+      day.items = day.items.filter(x => x.id !== itemId);
+      saveState();
+      showToast('일정이 삭제되었습니다.');
+    }
+
+    // Bookings CRUD
+    function renderBookings() {
+      renderBookingGroup('flights', 'flightsList', '등록된 항공편이 없습니다.');
+      renderBookingGroup('stays', 'staysList', '등록된 숙소 예약이 없습니다.');
+      renderBookingGroup('transports', 'transportsList', '등록된 현지 기차·버스 예약이 없습니다.');
+    }
+
+    function renderBookingGroup(type, containerId, emptyMsg) {
+      const container = document.getElementById(containerId);
+      const list = state.bookings[type] || [];
+      if (list.length === 0) {
+        container.innerHTML = `<div style="color:var(--text-muted); font-size:13px; padding:10px 0;">${emptyMsg}</div>`;
+        return;
+      }
+      container.innerHTML = list.map(bk => {
+        const mapBtn = bk.location
+          ? `<a class="btn-map" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(bk.location)}" target="_blank" rel="noopener">📍 구글 맵 열기</a>`
+          : '';
+        return `
+          <div class="booking-card">
+            <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:8px;">
+              <div class="booking-card-title">${escapeHtml(bk.title)}</div>
+              ${bk.pnr ? `<span class="pnr-badge">예약번호: ${escapeHtml(bk.pnr)}</span>` : ''}
+            </div>
+            <div class="booking-meta">
+              ${bk.provider ? `<div><strong>구분/도시:</strong> ${escapeHtml(bk.provider)}</div>` : ''}
+              ${bk.date1 ? `<div><strong>시작/체크인:</strong> ${escapeHtml(bk.date1)}</div>` : ''}
+              ${bk.date2 ? `<div><strong>도착/체크아웃:</strong> ${escapeHtml(bk.date2)}</div>` : ''}
+              ${bk.memo ? `<div style="margin-top:6px; background:#fff; padding:7px 9px; border-radius:6px; border:1px solid var(--border); white-space:pre-wrap;">${escapeHtml(bk.memo)}</div>` : ''}
+            </div>
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:6px; margin-top:4px;">
+              <div>${mapBtn}</div>
+              <div style="display:flex; gap:6px;">
+                <button class="btn-outline" onclick="openBookingModal('${type}', '${bk.id}')">✏️ 수정</button>
+                <button class="btn-danger" onclick="deleteBookingItem('${type}', '${bk.id}')">🗑️ 삭제</button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function openBookingModal(type, editId = null) {
+      document.getElementById('bookingType').value = type;
+      document.getElementById('editBookingId').value = editId || '';
+
+      const labels = {
+        flights: { modal: '✈️ 항공편 예약', title: '항공 구간 (예: 인천 → 리스본)', d1: '출발 일시', d2: '도착 일시', prov: '항공사 · 편명' },
+        stays: { modal: '🏨 숙소 예약', title: '숙소명', d1: '체크인 날짜/시간', d2: '체크아웃 날짜/시간', prov: '도시 · 국가' },
+        transports: { modal: '🚆 현지 교통 예약', title: '이동 구간 (예: 리스본 → 포르투)', d1: '출발 일시', d2: '도착 일시', prov: '교통수단 (CP 기차, Renfe, ALSA 등)' }
+      }[type];
+
+      document.getElementById('bookingModalTitle').textContent = editId ? `${labels.modal} 수정` : `${labels.modal} 추가`;
+      document.getElementById('bkTitleLabel').textContent = labels.title;
+      document.getElementById('bkDate1Label').textContent = labels.d1;
+      document.getElementById('bkDate2Label').textContent = labels.d2;
+      document.getElementById('bkProviderLabel').textContent = labels.prov;
+
+      if (editId) {
+        const bk = state.bookings[type].find(x => x.id === editId);
+        document.getElementById('bkTitle').value = bk.title || '';
+        document.getElementById('bkDate1').value = bk.date1 || '';
+        document.getElementById('bkDate2').value = bk.date2 || '';
+        document.getElementById('bkProvider').value = bk.provider || '';
+        document.getElementById('bkPnr').value = bk.pnr || '';
+        document.getElementById('bkLocation').value = bk.location || '';
+        document.getElementById('bkMemo').value = bk.memo || '';
+      } else {
+        ['bkTitle', 'bkDate1', 'bkDate2', 'bkProvider', 'bkPnr', 'bkLocation', 'bkMemo'].forEach(id => {
+          document.getElementById(id).value = '';
+        });
+      }
+      document.getElementById('bookingModal').classList.add('open');
+    }
+
+    function saveBookingItem() {
+      const type = document.getElementById('bookingType').value;
+      const title = document.getElementById('bkTitle').value.trim();
+      if (!title) {
+        alert('구간 또는 숙소명을 입력해주세요.');
+        return;
+      }
+      const editId = document.getElementById('editBookingId').value;
+      const payload = {
+        id: editId || 'bk_' + Date.now() + '_' + Math.random().toString(36).slice(2, 6),
+        title,
+        date1: document.getElementById('bkDate1').value.trim(),
+        date2: document.getElementById('bkDate2').value.trim(),
+        provider: document.getElementById('bkProvider').value.trim(),
+        pnr: document.getElementById('bkPnr').value.trim(),
+        location: document.getElementById('bkLocation').value.trim(),
+        memo: document.getElementById('bkMemo').value.trim()
+      };
+
+      if (editId) {
+        const idx = state.bookings[type].findIndex(x => x.id === editId);
+        if (idx > -1) state.bookings[type][idx] = payload;
+      } else {
+        state.bookings[type].push(payload);
+      }
+      closeModal('bookingModal');
+      saveState();
+      showToast('예약 내역이 저장되었습니다.');
+    }
+
+    function deleteBookingItem(type, id) {
+      if (!confirm('이 예약 내역을 삭제할까요?')) return;
+      state.bookings[type] = state.bookings[type].filter(x => x.id !== id);
+      saveState();
+      showToast('예약 내역이 삭제되었습니다.');
+    }
+
+    // Overview Table
+    function renderOverview() {
+      const tbody = document.getElementById('overviewTableBody');
+      tbody.innerHTML = state.days.map((d, idx) => {
+        const c = getCountryInfo(d.country);
+        const items = (d.items || []).slice().sort((a, b) => (a.time || '').localeCompare(b.time || ''));
+        const summary = items.length > 0
+          ? items.map(it => `<strong>${escapeHtml(it.time)}</strong> ${escapeHtml(it.place)}`).join(' → ')
+          : '<span style="color:#94a3b8;">세부 일정 미정</span>';
+        return `
+          <tr class="summary-row" onclick="jumpToDay(${idx})">
+            <td style="white-space:nowrap;"><strong>Day ${d.dayNum}</strong><br/><span style="font-size:12px; color:var(--text-muted);">${d.shortDate}</span></td>
+            <td style="white-space:nowrap;"><span class="country-badge ${c.cls}">${c.flag} ${escapeHtml(d.city)}</span></td>
+            <td>${summary}${d.note ? `<div style="font-size:12px; color:var(--primary); margin-top:4px;">📝 ${escapeHtml(d.note)}</div>` : ''}</td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function jumpToDay(idx) {
+      selectedDayIndex = idx;
+      switchTab('timeline');
+    }
+
+    // Backup / Restore
+    function openBackupModal() {
+      document.getElementById('backupModal').classList.add('open');
+    }
+
+    function exportJsonFile() {
+      const blob = new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = `iberia-travel-2027-backup-${new Date().toISOString().slice(0,10)}.json`;
+      a.click();
+      showToast('백업 파일이 다운로드되었습니다.');
+    }
+
+    function importJsonFile(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = e => {
+        try {
+          const imported = JSON.parse(e.target.result);
+          if (!imported.days || !Array.isArray(imported.days)) throw new Error();
+          state = imported;
+          saveState();
+          closeModal('backupModal');
+          showToast('✅ 백업 데이터를 성공적으로 불러왔습니다.');
+        } catch (err) {
+          alert('올바른 여행 플래너 백업 파일(.json)이 아닙니다.');
+        }
+      };
+      reader.readAsText(file);
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).classList.remove('open');
+    }
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    initApp();
+  </script>
+</body>
+</html>
